@@ -398,7 +398,7 @@ class GameState {
 
         this.players.set(playerId, player);
         this.savePlayer(playerId, player);
-        this.log('SYSTEM', `${player.name} (${robotClass?.name || ROBOT_CLASSES[player.class].name}) присоединился`, { playerId });
+        this.log('SYSTEM', `${player.name} (${ROBOT_CLASSES[player.class].name}) присоединился`, { playerId });
 
         return player;
     }
