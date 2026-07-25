@@ -1,0 +1,72 @@
+[
+  {
+    "name": "1. Вход: класс определяется по ID",
+    "userId": "test-bot-001",
+    "callsign": "Тест-Бот",
+    "steps": [
+      { "action": "checkPlayer", "expect": { "level": 1, "xp": 0 } },
+      { "action": "checkPlayer", "expect": { "hp": 100, "maxHp": 100 } },
+      { "action": "checkPlayer", "expect": { "resources": 0, "prestige": 0, "combo": 0 } },
+      { "action": "checkPlayer", "expect": { "bossKills": 0, "keys": 0 } }
+    ]
+  },
+  {
+    "name": "2. Движение: перемещение позиции",
+    "userId": "test-bot-002",
+    "callsign": "Тест-Движ",
+    "steps": [
+      { "action": "doAction", "actionType": { "type": "move", "target": { "x": 75, "y": 25 } }, "expect": { "success": true } },
+      { "action": "checkPlayer", "expect": { "position": { "x": 75, "y": 25 } } }
+    ]
+  },
+  {
+    "name": "3. Атака: результат зависит от наличия босса",
+    "userId": "test-bot-003",
+    "callsign": "Тест-Атака",
+    "steps": [
+      { "action": "doAction", "actionType": { "type": "attack" } }
+    ]
+  },
+  {
+    "name": "4. Сундук без ключей: ошибка",
+    "userId": "test-bot-004",
+    "callsign": "Тест-Сундук",
+    "steps": [
+      { "action": "doAction", "actionType": { "type": "chest" }, "expect": { "error": "Нет ключей" } }
+    ]
+  },
+  {
+    "name": "5. Leaderboard отвечает",
+    "userId": "test-bot-005",
+    "callsign": "Тест-Лидер",
+    "steps": [
+      { "action": "leaderboard", "expect": { "minEntries": 0 } }
+    ]
+  },
+  {
+    "name": "6. Sync отвечает с таймерами",
+    "userId": "test-bot-006",
+    "callsign": "Тест-Синк",
+    "steps": [
+      { "action": "sync" }
+    ]
+  },
+  {
+    "name": "7. Волна: waveNumber растёт",
+    "userId": "test-bot-007",
+    "callsign": "Тест-Волна",
+    "steps": [
+      { "action": "sync" },
+      { "action": "wait", "ms": 11000 },
+      { "action": "sync" }
+    ]
+  },
+  {
+    "name": "8. Определение класса: детерминированность",
+    "userId": "test-bot-008",
+    "callsign": "Тест-Класс",
+    "steps": [
+      { "action": "checkPlayer", "expect": { "level": 1 } }
+    ]
+  }
+]

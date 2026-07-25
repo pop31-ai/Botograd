@@ -1,0 +1,12 @@
+{
+  "name": "Тестовый раннер Ботоград",
+  "version": "1.0.0",
+  "description": "Автотесты для Ботоград (PORT 3001)",
+  "main": "runner.js",
+  "scripts": {
+    "test": "node runner.js"
+  },
+  "dependencies": {
+    "ws": "^8.0.0"
+  }
+}
